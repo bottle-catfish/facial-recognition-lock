@@ -13,3 +13,10 @@ with open('credentials.csv', 'r') as file :
 client = boto3.client('rekognition', region_name='us-west-2',
                                                  aws_access_key_id = access_key_id, aws_secret_access_key=secret_access_key)
 
+photo = 'admin.jpeg'
+
+with open(photo, 'rb') as image_field : 
+    source_bytes = image_field.read()
+
+detect_objects = client.detect_labels(Image={'Bytes': source_bytes})
+print(detect_objects)
