@@ -24,10 +24,9 @@ test1_bytes = open(test1_image, 'rb')
 
 
 
-response=client.compare_faces(SimilarityThreshold=70,
+test1=client.compare_faces(SimilarityThreshold=70,
                                   SourceImage={'Bytes': admin_bytes.read()},
                                   TargetImage={'Bytes': test1_bytes.read()})
 
-# detect_objects = client.detect_labels(Image={'Bytes': admin_bytes})
-
-print(response)
+test1_similarity = test1['FaceMatches'][0]['Similarity']
+print(test1_similarity)
